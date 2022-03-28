@@ -96,11 +96,20 @@ public class ExecutorsTest {
 	
 	
 	public static void  main(String arsg[]) throws InterruptedException, ExecutionException {
-		new ExecutorsTest().newFixedThreadPool_3();
+		//new ExecutorsTest().newFixedThreadPool_3();
 		//new ExecutorsTest().newFixedThreadPool_4();
+		ExecutorService executorService = Executors.newCachedThreadPool();
+		executorService.execute(new Task());
+
+
 	}
 	
-	
+	public static class Task implements Runnable{
 
+		@Override
+		public void run() {
+			System.out.println(Thread.currentThread().getName());
+		}
+	}
 
 }
